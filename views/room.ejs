@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        const ROOM_ID = "<%= roomId %>"
+    </script>
+    <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+    <script src="/socket.io/socket.io.js" defer></script>
+    <script src="script.js" defer></script>
+    <script src="Connected.js" defer></script>
+    <title>Connected</title>
+    <link rel="stylesheet" href="Connected_styles.css">
+    
+    <style>
+        @font-face {
+            font-family: ab;
+            src: url(AbrilFatface-Regular.ttf);
+        }
+        body {font-family: Arial, Helvetica, sans-serif;}
+
+      
+        .modal {
+        display: none; 
+        position: fixed; 
+        z-index: 1; 
+        padding-top: 100px; 
+        left: 0;
+        top: 0;
+        width: 100%; 
+        height: 100%; 
+        overflow: auto; 
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
+        }
+
+        
+        .modal-content {
+        background-color: rgb(76, 117, 210);
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 50%;
+        height: 70%;
+        color: white;
+        font-family: ab;
+        font-size: 156%;
+        }
+        #Click-herebtn{
+            background-color: white;
+            width: 35%;
+            padding: 2% 0%;
+            font-size: 80%;
+            text-align: center;
+            border-radius: 28px;
+            color: black;
+        }
+        #Click-herebtnv{
+            background-color: white;
+            width: 35%;
+            padding: 2% 0%;
+            font-size: 80%;
+            text-align: center;
+            border-radius: 28px;
+            color: black;
+            top: -11%;
+            left: 39%;
+            position: relative;
+        }
+        #Click-herebtnv:hover{
+            color: rgb(114, 137,218);
+            box-shadow: 0 0 10px grey;
+        }
+        #Click-herebtn:hover{
+            color: rgb(114, 137,218);
+            box-shadow: 0 0 10px grey;
+        }
+        .close {
+        color:white;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+        }
+        #videoGrid{
+            display: grid;
+            grid-template-columns: repeat(autofill, 300px);
+            grid-auto-rows: 300px;
+        }
+        video{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <header>Comms Activated</header>
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p><img src="ltm.gif" alt="" height="250" width="400"></p>
+          <p>Unable to connect with mobile users ?</p>
+          <p>Switch to mobile version</p> <br> <br> <br>
+          <div id="Click-herebtn" class="regbtn"   onclick="window.location.href= 'http://localhost:7700/'">Switch To other version</div> <div id="Click-herebtnv" class="regbtn" >Continue on this page</div>
+        </div>
+      
+      </div>
+    <script defer>        
+        var modal = document.getElementById("myModal");
+        var btn = document.getElementById("myBtn");      
+        var span = document.getElementsByClassName("close")[0];        
+        setTimeout(function(){ modal.style.display = "block"; }, 10000);         
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+        document.getElementById("Click-herebtnv").onclick = function() {
+            modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == modal) {
+            modal.style.display = "none";
+            }
+        }
+    </script>
+    <div id="ConnectImg"><img src="Img/Connect.png" alt="" height="150" width="220"></div>
+    <div id="Bar">
+        <div id="pred_Text">
+            Suspected Imposter's
+        </div>
+        <br>
+        <div id="pred_Text">
+            With A.i
+        </div>
+        
+        <div class="profile">
+            <div class = "Sus" id="sus1" >
+               <img src="Img/Profile/red.png" alt="" height="70" width="75"> 100%
+            </div>
+            <div class = "Sus" id="sus2">
+                <img src="Img/Profile/blue.png" alt="" height="70" width="75"> 100%
+            </div>
+            <div class = "Sus" id="sus3">
+                <img src="Img/Profile/dark_green.png" alt="" height="70" width="75"> 100%
+            </div>
+            <div class = "Sus" id="sus4">
+                <img src="Img/Profile/lime.png" alt="" height="70" width="75"> 100%
+            </div>    
+            <!--<img src="Img/Profile/yellow.png" alt="" height="70" width="75">
+            <img src="Img/Profile/orange.png" alt="" height="70" width="75">
+            <img src="Img/Profile/black.png" alt="" height="70" width="75">
+            <img src="Img/Profile/brown.png" alt="" height="70" width="75">
+            <img src="Img/Profile/cyan.png" alt="" height="70" width="75">
+            <img src="Img/Profile/pink.png" alt="" height="70" width="75">
+            <img src="Img/Profile/purple.png" alt="" height="70" width="75">-->
+        </div>
+    </div>
+    <div class="Comms">
+        <div class= "PlrClr"id="Red">
+            <img src="Img/Profile/red.png" alt="red" height ="100" width="105">
+        </div>
+        <div class= "PlrClr"id="blue">
+            <img src="Img/Profile/blue.png" alt="blue" height ="100" width="105">
+        </div>
+        <div class= "PlrClr"id="Green">
+            <img src="Img/Profile/dark_green.png" alt="dark_green" height ="100" width="105">
+        </div>
+        <div class= "PlrClr"id="yellow">
+            <img src="Img/Profile/yellow.png" alt="yellow" height ="100" width="105">
+        </div>
+        <div class= "PlrCol"id="Purple">
+            <img src="Img/Profile/purple.png" alt="purple" height ="100" width="105">
+        </div>
+        <div class= "PlrCol"id="Orange">
+            <img src="Img/Profile/orange.png" alt="orange" height ="100" width="105">
+        </div>
+        <div class= "PlrCol"id="Black">
+            <img src="Img/Profile/black.png" alt="black" height ="100" width="105">
+        </div>
+        <div class= "PlrCol"id="White">
+            <img src="Img/Profile/white.png" alt="white" height ="100" width="105">
+        </div>
+        <div class= "PlrCal"id="Cyan">
+            <img src="Img/Profile/cyan.png" alt="cyan" height ="100" width="105">
+        </div>
+        <div class= "PlrCal"id="Pink">
+            <img src="Img/Profile/pink.png" alt="Pink" height ="100" width="105">
+        </div>
+        <div class= "PlrCal"id="Lime">
+            <img src="Img/Profile/lime.png" alt="lime" height ="100" width="105">
+        </div>
+        <div class= "PlrCal"id="Brown">
+            <img src="Img/Profile/brown.png" alt="brown" height ="100" width="105">
+        </div>
+
+    </div>
+    </div>
+    </div>
+    <div id="paddthis">
+    <div id="Toolbox">
+        <div id="No1" class = "toolSusctrl">
+            <img src="Img/Profile/red.png" alt="" height="50" width="55">
+            <img src="Img/green tik.png" alt="" height="20" width = "20" id="Greentik1" class="Greentik">
+            <img src = "Img/yellow tik.png" alt = "" width = "25" height = "15">
+            <img src = "Img/ded.png" alt = "" width ="20" height = "20">
+            <span class="num" id="Num">100</span><span id="percent">%</span> 
+        </div>
+        <div id="No2" class = "toolSusctrl">
+            <img src="Img/Profile/blue.png" alt="" height="50" width="55">
+            <img src="Img/green tik.png" alt="" height="20" width = "20" id="Greentik1" class="Greentik">
+            <img src = "Img/yellow tik.png" alt = "" width = "25" height = "15">
+            <img src = "Img/ded.png" alt = "" width ="20" height = "20">
+            <span class="num" id="Num">100</span><span id="percent">%</span>
+        </div>
+        <div id="No3" class = "toolSusctrl">
+            <img src="Img/Profile/black.png" alt="" height="50" width="55">
+            <img src="Img/green tik.png" alt="" height="20" width = "20" id="Greentik1" class="Greentik">
+            <img src = "Img/yellow tik.png" alt = "" width = "25" height = "15">
+            <img src = "Img/ded.png" alt = "" width ="20" height = "20">
+            <span class="num" id="Num">100</span><span id="percent">%</span>
+        </div>
+        <div id="No4" class = "toolSusctrl">
+            <img src="Img/Profile/white.png" alt="" height="50" width="55">
+            <img src="Img/green tik.png" alt="" height="20" width = "20" id="Greentik1" class="Greentik">
+            <img src = "Img/yellow tik.png" alt = "" width = "25" height = "15">
+            <img src = "Img/ded.png" alt = "" width ="20" height = "20">
+            <span class="num" id="Num">100</span><span id="percent">%</span>
+        </div>
+        <div id="No5" class = "toolSusctrl">
+            <img src="Img/Profile/yellow.png" alt="" height="50" width="55">
+            <img src="Img/green tik.png" alt="" height="20" width = "20" id="Greentik1" class="Greentik">
+            <img src = "Img/yellow tik.png" alt = "" width = "25" height = "15">
+            <img src = "Img/ded.png" alt = "" width ="20" height = "20">
+            <span class="num" id="Num">100</span><span id="percent">%</span>
+        </div>
+        <div id="No6" class = "toolSusctrl">
+            <img src="Img/Profile/dark_green.png" alt="" height="50" width="55">
+            <img src="Img/green tik.png" alt="" height="20" width = "20" id="Greentik1" class="Greentik">
+            <img src = "Img/yellow tik.png" alt = "" width = "25" height = "15">
+            <img src = "Img/ded.png" alt = "" width ="20" height = "20">
+            <span class="num" id="Num">100</span><span id="percent">%</span>
+        </div>
+        <div id="No7" class = "toolSusctrl">
+            <img src="Img/Profile/lime.png" alt="" height="50" width="55">
+            <img src="Img/green tik.png" alt="" height="20" width = "20" id="Greentik1" class="Greentik">
+            <img src = "Img/yellow tik.png" alt = "" width = "25" height = "15">
+            <img src = "Img/ded.png" alt = "" width ="20" height = "20">
+            <span class="num" id="Num">100</span><span id="percent">%</span>
+        </div>
+        <div id="No8" class = "toolSusctrl">
+            <img src="Img/Profile/orange.png" alt="" height="50" width="55">
+            <img src="Img/green tik.png" alt="" height="20" width = "20" id="Greentik1" class="Greentik">
+            <img src = "Img/yellow tik.png" alt = "" width = "25" height = "15">
+            <img src = "Img/ded.png" alt = "" width ="20" height = "20">
+            <span class="num" id="Num">100</span><span id="percent">%</span>
+        </div>
+        <div id="No9" class = "toolSusctrl">
+            <img src="Img/Profile/purple.png" alt="" height="50" width="55">
+            <img src="Img/green tik.png" alt="" height="20" width = "20" id="Greentik1" class="Greentik">
+            <img src = "Img/yellow tik.png" alt = "" width = "25" height = "15">
+            <img src = "Img/ded.png" alt = "" width ="20" height = "20">
+            <span class="num" id="Num">100</span><span id="percent">%</span>
+        </div>
+        <div id="No10" class = "toolSusctrl">
+            <img src="Img/Profile/pink.png" alt="" height="50" width="55">
+            <img src="Img/green tik.png" alt="" height="20" width = "20" id="Greentik1" class="Greentik">
+            <img src = "Img/yellow tik.png" alt = "" width = "25" height = "15">
+            <img src = "Img/ded.png" alt = "" width ="20" height = "20">
+            <span class="num" id="Num">100</span><span id="percent">%</span>
+        </div>
+        <div id="No11" class = "toolSusctrl">
+            <img src="Img/Profile/cyan.png" alt="" height="50" width="55">
+            <img src="Img/green tik.png" alt="" height="20" width = "20" id="Greentik1" class="Greentik">
+            <img src = "Img/yellow tik.png" alt = "" width = "25" height = "15">
+            <img src = "Img/ded.png" alt = "" width ="20" height = "20">
+            <span class="num" id="Num">100</span><span id="percent">%</span>
+        </div>
+        <div id="No12" class = "toolSusctrl">
+            <img src="Img/Profile/brown.png" alt="" height="50" width="55">
+            <img src="Img/green tik.png" alt="" height="20" width = "20" id="Greentik1" class="Greentik">
+            <img src = "Img/yellow tik.png" alt = "" width = "25" height = "15">
+            <img src = "Img/ded.png" alt = "" width ="20" height = "20">
+            <span class="num" id="Num">100</span><span id="percent">%</span>
+        </div>
+    </div>
+    </div>
+    <div id="profileDp">
+        <img id = "profilePic" src="red.png" alt="" width="105" height="100">
+    </div>
+    <div id="MyName">Sign In now </div>
+    <div class="Maps">
+       <div id="text"> Map :</div><div id="mapname">did not choose</div>
+    </div>
+    <div id="Ar">
+        <a class="trigger_popup_fricc"><img src="Img/arrow.png" alt="" width="50" height="70"></a>
+    </div>
+    <div class="hover_bkgr_fricc">
+        <span class="helper"></span>
+        <div>
+            <div class="popupCloseButton">&times;</div>
+            <div class="terms">
+                <div class="hrd"><h1>Dont worry you are not Cheating</h1></div>
+                <div class="terms1">
+                hey this is a simple tool that helps you to find the imposter <br>
+                basically whatever you store in your brain is just shown here visually
+                </div>
+                <div class="button">
+                    <a href='HTU.html' target = "_blank" class="button1 button1-success">How to use</a>
+                    <button onclick ="popUpBtn()"class="button2">Setup</a>
+                    <button class="button3">Skip</a>
+                </div>
+            </div>
+         
+        </div>
+    <script src="Connected.js"></script>
+</body>
+</html>

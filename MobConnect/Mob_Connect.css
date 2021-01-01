@@ -1,0 +1,241 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+@font-face{
+    font-family: ABFR;
+    src: url(AbrilFatface-Regular.ttf);
+}
+header{
+    padding: 2% 2%;
+    color: #4dcc7d;
+    font-size: 8vw;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    left: 4%;
+    position: absolute;
+}
+body{
+    background-color: rgb(3, 1, 22);
+}
+#ConnectImg{
+    left: 13%;
+    position: absolute;
+    top: 5%;
+    position: absolute;
+    padding: 5% 0%;
+}
+#Toolbox{
+    top: 34%;
+    left: 2%;
+    position: absolute;
+}
+.toolSusctrl>img{
+    width: 40%;
+    height: auto;
+}
+#Toolsr{
+    width: 40%;
+    height: auto;
+    top: 5%;
+    left: 39%;
+    position: absolute;
+}
+#Toolsb{
+    width: 40%;
+    height: auto;
+    top: 13%;
+    left: 39%;
+    position: absolute;
+}
+#Toolsbl{
+    width: 40%;
+    height: auto;
+    top: 21%;
+    left: 39%;
+    position: absolute;
+}
+#Toolsw{
+    width: 40%;
+    height: auto;
+    top: 30%;
+    left: 39%;
+    position: absolute;
+}
+#Toolso{
+    width: 40%;
+    height: auto;
+    top: 63%;
+    left: 39%;
+    position: absolute;
+}
+#Toolsy{
+    width: 40%;
+    height: auto;
+    top: 38%;
+    left: 39%;
+    position: absolute;
+}
+#Toolsg{
+    width: 40%;
+    height: auto;
+    top: 46%;
+    left: 39%;
+    position: absolute;
+}
+#Toolsl{
+    width: 40%;
+    height: auto;
+    top: 55%;
+    left: 39%;
+    position: absolute;
+}
+ 
+#Toolsp{
+    width: 40%;
+    height: auto;
+    top: 72%;
+    left: 39%;
+    position: absolute;
+}
+#Toolspi{
+    width: 40%;
+    height: auto;
+    top: 80%;
+    left: 39%;
+    position: absolute;
+}
+#Toolsc{
+    width: 40%;
+    height: auto;
+    top: 89%;
+    left: 39%;
+    position: absolute;
+}
+#Toolsbr{
+    width: 40%;
+    height: auto;
+    top: 97%;
+    left: 39%;
+    position: absolute;
+}
+#rnpc{
+    font-family: ABFR;
+    color: white;
+    width: 44%;
+    height: auto;
+    top: 12;
+    top: 3%;
+    left: 39%;
+    position: absolute;
+}
+#B{
+    color: white;
+    position: relative;
+    top: 12%;
+}
+.Text{
+    font-family: ABFR;
+}
+.num{
+    font-family: ABFR;
+}
+.num{
+    color: white;
+}
+#percent{
+    color: white;
+}
+ 
+.num{
+    color: white;
+}
+#percent{
+    color: white;
+}
+#bnpc{
+    color: white;
+    width: 44%;
+    height: auto;
+    top: 11%;
+    left: 39%;
+    position: absolute;
+}
+#blnpc{
+    color: white;
+    width: 44%;
+    height: auto;
+    top: 19%;
+    left: 39%;
+    position: absolute;
+}
+#wnpc{
+    color: white;
+    width: 44%;
+    height: auto;
+    top: 28%;
+    left: 39%;
+    position: absolute;
+}
+#ynpc{
+    color: white;
+    width: 44%;
+    height: auto;
+    top: 36%;
+    left: 39%;
+    position: absolute;
+}
+#gnpc{
+    color: white;
+    width: 44%;
+    height: auto;
+    top: 44%;
+    left: 39%;
+    position: absolute;
+}
+#lnpc{
+    color: white;
+    width: 44%;
+    height: auto;
+    top: 53%;
+    left: 39%;
+    position: absolute;
+}
+#onpc{
+    color: white;
+    width: 44%;
+    height: auto;
+    top: 61%;
+    left: 39%;
+    position: absolute;
+}
+#pnpc{
+    color: white;
+    width: 44%;
+    height: auto;
+    top: 70%;
+    left: 39%;
+    position: absolute;
+}
+
+#pinpc{
+    color: white;
+    width: 44%;
+    height: auto;
+    top: 78%;
+    left: 39%;
+    position: absolute;
+}
+#cnpc{
+    color: white;
+    width: 44%;
+    height: auto;
+    top: 87%;
+    left: 39%;
+    position: absolute;
+}
+ 
+.toolSusctrl{
+    border: 5px rgb(136, 136, 209) solid;
+    border-radius: 14%;
+}
